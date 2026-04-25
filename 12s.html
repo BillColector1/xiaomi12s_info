@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xiaomi 12S Ultra — Leica × Xiaomi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0a0a;--bg2:#111;--bg3:#161616;--bg4:#1c1c1c;
+    --text:#f0ede8;--muted:#888;--dim:#444;
+    --accent:#e8d5b0;--gold:#c9a84c;--red:#e84040;
+    --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+  
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;color:var(--accent)}
+  .nav-links{display:flex;gap:2rem}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--text)}
+  
+  /* HERO */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+  .hero-left{padding:10rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+  .hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
+  .hero-tag::before{content:'';width:2rem;height:1px;background:var(--gold)}
+  .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,8vw,7rem);line-height:0.9;letter-spacing:0.02em;margin-bottom:1.5rem}
+  .hero-title span{display:block}
+  .hero-title .t1{color:var(--text)}
+  .hero-title .t2{color:var(--gold)}
+  .hero-title .t3{color:var(--muted);font-size:0.55em}
+  .hero-sub{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:28rem;margin-bottom:2.5rem}
+  .hero-sub strong{color:var(--accent);font-weight:400}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border:1px solid;transition:all 0.25s;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:400}
+  .btn-primary{background:var(--gold);color:#0a0a0a;border-color:var(--gold)}
+  .btn-primary:hover{background:#d4b055;border-color:#d4b055}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--border2)}
+  .btn-ghost:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.2)}
+  .hero-right{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .hero-phone-wrap{position:relative;z-index:2}
+  .hero-phone{width:280px;filter:drop-shadow(0 40px 80px rgba(201,168,76,0.15))}
+  .hero-circle{position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(201,168,76,0.08);top:50%;left:50%;transform:translate(-50%,-50%)}
+  .hero-circle2{width:380px;height:380px;border:1px solid rgba(201,168,76,0.05)}
+  .hero-right::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.04) 0%,transparent 70%)}
+  
+  /* SPECS STRIP */
+  .specs-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.5rem 3rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border)}
+  .spec-item{background:var(--bg);padding:1.2rem 1.5rem;text-align:center}
+  .spec-val{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--accent);letter-spacing:0.05em;line-height:1}
+  .spec-lbl{font-size:0.68rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.3rem}
+  
+  /* SECTION */
+  section{padding:6rem 3rem}
+  .section-header{margin-bottom:4rem}
+  .section-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem}
+  .section-tag::before{content:'';width:2rem;height:1px;background:var(--gold)}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.03em;line-height:1}
+  
+  /* CAMERA SECTION */
+  .camera-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+  .cam-card{background:var(--bg2);padding:2.5rem;position:relative;overflow:hidden}
+  .cam-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--border)}
+  .cam-card.featured::before{background:linear-gradient(90deg,var(--gold),transparent)}
+  .cam-icon{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--gold);opacity:0.15;position:absolute;right:1.5rem;top:1rem;line-height:1}
+  .cam-name{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;font-family:'JetBrains Mono',monospace}
+  .cam-mp{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:0.02em;line-height:1;margin-bottom:0.3rem}
+  .cam-desc{font-size:0.82rem;color:var(--muted);line-height:1.6}
+  .cam-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem}
+  .tag{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border2);color:var(--muted)}
+  
+  /* FULL SPECS */
+  .specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+  .spec-block{background:var(--bg2);padding:2rem}
+  .spec-block-title{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-family:'JetBrains Mono',monospace;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+  .spec-row{display:flex;justify-content:space-between;align-items:start;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:1rem}
+  .spec-row:last-child{border-bottom:none}
+  .spec-key{font-size:0.78rem;color:var(--muted);flex-shrink:0}
+  .spec-val2{font-size:0.78rem;color:var(--text);text-align:right}
+  
+  /* ROM SECTION */
+  .rom-section{background:var(--bg2)}
+  .rom-tabs{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid var(--border)}
+  .rom-tab{padding:1rem 2rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif}
+  .rom-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+  .rom-tab:hover:not(.active){color:var(--text)}
+  .rom-content{display:none;padding:2.5rem 0}
+  .rom-content.active{display:block}
+  .rom-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border)}
+  .rom-card{background:var(--bg3);padding:2rem;border-top:2px solid var(--border);transition:border-color 0.2s}
+  .rom-card:hover{border-top-color:var(--gold)}
+  .rom-card-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:1rem}
+  .rom-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em}
+  .rom-badge{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.5rem;border:1px solid;font-family:'JetBrains Mono',monospace}
+  .badge-recommended{border-color:var(--gold);color:var(--gold)}
+  .badge-stable{border-color:#4a9c5d;color:#4a9c5d}
+  .badge-twrp{border-color:#5b8dd9;color:#5b8dd9}
+  .badge-official{border-color:var(--muted);color:var(--muted)}
+  .rom-desc{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:1.5rem}
+  .rom-features{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.5rem}
+  .rom-feature{font-size:0.76rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem}
+  .rom-feature::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+  .rom-feature.bad::before{background:var(--red)}
+  .rom-feature.bad{color:#c07070}
+  .rom-links{display:flex;flex-direction:column;gap:0.5rem}
+  .dl-link{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 0.8rem;border:1px solid var(--border);font-size:0.75rem;text-decoration:none;color:var(--text);transition:all 0.2s;background:var(--bg4)}
+  .dl-link:hover{border-color:var(--gold);color:var(--gold)}
+  .dl-link span{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:0.68rem}
+  
+  /* BUY SECTION */
+  .buy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border)}
+  .buy-card{background:var(--bg2);padding:2rem;text-align:center;transition:background 0.2s}
+  .buy-card:hover{background:var(--bg3)}
+  .buy-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.1em;margin-bottom:0.5rem}
+  .buy-type{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;font-family:'JetBrains Mono',monospace}
+  .buy-price{font-size:0.85rem;color:var(--accent);margin-bottom:1.2rem}
+  .buy-link{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.5rem;border:1px solid var(--border2);color:var(--text);text-decoration:none;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s}
+  .buy-link:hover{background:var(--gold);border-color:var(--gold);color:#0a0a0a}
+  
+  /* GALLERY */
+  .img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+  .img-item{aspect-ratio:4/3;overflow:hidden;position:relative}
+  .img-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;filter:brightness(0.9)}
+  .img-item:hover img{transform:scale(1.04);filter:brightness(1)}
+  .img-item.tall{grid-row:span 2;aspect-ratio:auto}
+  
+  /* FOOTER */
+  footer{padding:3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .footer-note{font-size:0.75rem;color:var(--dim);line-height:1.6}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--dim)}
+  
+  /* NOISE OVERLAY */
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem}
+    .nav-links{gap:1rem}
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-left{padding:8rem 1.5rem 3rem}
+    .hero-right{height:360px;padding:2rem}
+    .hero-phone{width:180px}
+    .specs-strip{grid-template-columns:repeat(3,1fr);padding:1rem 1.5rem}
+    section{padding:4rem 1.5rem}
+    .camera-grid,.specs-grid{grid-template-columns:1fr}
+    .rom-tab{padding:0.75rem 1rem;font-size:0.7rem}
+    footer{flex-direction:column;gap:1rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">12S Ultra</div>
+  <div class="nav-links">
+    <a href="#camera">Camera</a>
+    <a href="#specs">Specs</a>
+    <a href="#rom">ROM</a>
+    <a href="#buy">Mua máy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <div class="hero-tag">Flagship 2022 · Leica × Xiaomi</div>
+    <h1 class="hero-title">
+      <span class="t1">Xiaomi</span>
+      <span class="t2">12S Ultra</span>
+      <span class="t3">Codename: Thor</span>
+    </h1>
+    <p class="hero-sub">
+      Camera flagship đỉnh nhất 2022. Cảm biến <strong>Sony IMX989 1-inch</strong> kết hợp 
+      <strong>màu sắc Leica</strong> — không một smartphone nào có thể sao chép bokeh tự nhiên này.
+    </p>
+    <div class="hero-cta">
+      <a href="#buy" class="btn btn-primary">Mua ngay →</a>
+      <a href="#rom" class="btn btn-ghost">Tải ROM</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-circle hero-circle2" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+    <div class="hero-circle" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+    <div class="hero-phone-wrap">
+      <!-- SVG phone silhouette -->
+      <svg class="hero-phone" viewBox="0 0 280 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="272" height="552" rx="40" fill="#111" stroke="#2a2a2a" stroke-width="1.5"/>
+        <rect x="14" y="14" width="252" height="532" rx="34" fill="#0d0d0d"/>
+        <!-- Screen glow -->
+        <rect x="20" y="20" width="240" height="520" rx="30" fill="url(#sg)"/>
+        <defs>
+          <radialGradient id="sg" cx="50%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#0d0d0d" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="cg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#1a1506" stop-opacity="0.8"/>
+          </radialGradient>
+        </defs>
+        <!-- Camera module -->
+        <rect x="40" y="380" width="200" height="158" rx="36" fill="#0a0a0a" stroke="#1e1e1e" stroke-width="1.5"/>
+        <circle cx="105" cy="430" r="38" fill="#080808" stroke="#c9a84c" stroke-width="1.2"/>
+        <circle cx="175" cy="430" r="38" fill="#080808" stroke="#1e1e1e" stroke-width="1.2"/>
+        <circle cx="105" cy="500" r="30" fill="#080808" stroke="#1e1e1e" stroke-width="1.2"/>
+        <!-- Leica badge -->
+        <rect x="148" y="487" width="60" height="24" rx="4" fill="#c9a84c" opacity="0.12"/>
+        <text x="178" y="503" text-anchor="middle" fill="#c9a84c" font-family="Georgia,serif" font-size="8" letter-spacing="2" opacity="0.7">LEICA</text>
+        <!-- Main lens rings -->
+        <circle cx="105" cy="430" r="28" fill="url(#cg)"/>
+        <circle cx="105" cy="430" r="18" fill="#050505"/>
+        <circle cx="105" cy="430" r="10" fill="#0a0a0a"/>
+        <circle cx="105" cy="430" r="5" fill="#c9a84c" opacity="0.3"/>
+        <!-- Flash/sensor dots -->
+        <circle cx="185" cy="500" r="5" fill="#222"/>
+        <circle cx="195" cy="500" r="3" fill="#c9a84c" opacity="0.4"/>
+        <!-- Notch -->
+        <rect x="110" y="22" width="60" height="18" rx="9" fill="#080808"/>
+        <!-- Side buttons -->
+        <rect x="272" y="140" width="5" height="50" rx="2.5" fill="#1a1a1a"/>
+        <rect x="272" y="200" width="5" height="70" rx="2.5" fill="#1a1a1a"/>
+        <rect x="3" y="160" width="5" height="40" rx="2.5" fill="#1a1a1a"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS STRIP -->
+<div class="specs-strip">
+  <div class="spec-item">
+    <div class="spec-val">1"</div>
+    <div class="spec-lbl">Sony IMX989</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-val">50MP</div>
+    <div class="spec-lbl">Main Camera</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-val">SD 8+</div>
+    <div class="spec-lbl">Gen 1 SoC</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-val">67W</div>
+    <div class="spec-lbl">Fast Charge</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-val">IP68</div>
+    <div class="spec-lbl">Kháng nước</div>
+  </div>
+</div>
+
+<!-- CAMERA -->
+<section id="camera">
+  <div class="section-header">
+    <div class="section-tag">Hệ thống camera</div>
+    <h2 class="section-title">Leica × IMX989<br>Nhiếp ảnh vô tiền khoáng hậu</h2>
+  </div>
+  <div class="camera-grid">
+    <div class="cam-card featured" style="grid-column:span 2">
+      <div class="cam-icon">01</div>
+      <div class="cam-name">Main Camera · Leica Summicron</div>
+      <div class="cam-mp">50MP · 1-inch Sony IMX989</div>
+      <p class="cam-desc" style="max-width:32rem">Cảm biến lớn nhất từng được tích hợp vào smartphone. Diện tích thu sáng gấp 3.2 lần cảm biến 1/1.56-inch thông thường. Bokeh tự nhiên không đối thủ — không một flagship nào có thể bắt chước.</p>
+      <div class="cam-tags">
+        <span class="tag">f/1.9 aperture</span>
+        <span class="tag">OIS</span>
+        <span class="tag">Leica Vibrant</span>
+        <span class="tag">Leica Authentic</span>
+        <span class="tag">Natural Bokeh</span>
+        <span class="tag">4K/8K Video</span>
+      </div>
+    </div>
+    <div class="cam-card">
+      <div class="cam-icon">02</div>
+      <div class="cam-name">Ultra-wide · 120°</div>
+      <div class="cam-mp">48MP</div>
+      <p class="cam-desc">f/2.2 · góc siêu rộng 120°. Distortion correction tốt hơn Mi 11 Ultra. Màu sắc trung thực theo chuẩn Leica.</p>
+      <div class="cam-tags">
+        <span class="tag">f/2.2</span><span class="tag">120°</span>
+      </div>
+    </div>
+    <div class="cam-card">
+      <div class="cam-icon">03</div>
+      <div class="cam-name">Periscope Telephoto</div>
+      <div class="cam-mp">48MP · 5x Zoom</div>
+      <p class="cam-desc">f/4.1 · zoom quang học 5x · tương đương 120mm. OIS. Ổn định nhất trong các flagship 2022 khi quay video zoom.</p>
+      <div class="cam-tags">
+        <span class="tag">f/4.1</span><span class="tag">5x Optical</span><span class="tag">OIS</span>
+      </div>
+    </div>
+    <div class="cam-card" style="grid-column:span 2">
+      <div class="cam-icon">04</div>
+      <div class="cam-name">Selfie Camera</div>
+      <div class="cam-mp">32MP · f/2.45</div>
+      <p class="cam-desc">Front-facing 32MP với xử lý detail xuất sắc. 1080p/60fps video. HDR tốt trong điều kiện ngược sáng.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section id="specs" style="background:var(--bg2)">
+  <div class="section-header">
+    <div class="section-tag">Thông số kỹ thuật</div>
+    <h2 class="section-title">Full Specifications</h2>
+  </div>
+  <div class="specs-grid">
+    <div class="spec-block">
+      <div class="spec-block-title">Màn hình</div>
+      <div class="spec-row"><span class="spec-key">Kích thước</span><span class="spec-val2">6.73" AMOLED</span></div>
+      <div class="spec-row"><span class="spec-key">Độ phân giải</span><span class="spec-val2">1440×3200 (522ppi)</span></div>
+      <div class="spec-row"><span class="spec-key">Refresh Rate</span><span class="spec-val2">120Hz LTPO</span></div>
+      <div class="spec-row"><span class="spec-key">Độ sáng</span><span class="spec-val2">1500 nits peak</span></div>
+      <div class="spec-row"><span class="spec-key">Bảo vệ</span><span class="spec-val2">Gorilla Glass Victus</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-block-title">Hiệu năng</div>
+      <div class="spec-row"><span class="spec-key">Chip</span><span class="spec-val2">Snapdragon 8+ Gen 1</span></div>
+      <div class="spec-row"><span class="spec-key">RAM</span><span class="spec-val2">8GB / 12GB LPDDR5</span></div>
+      <div class="spec-row"><span class="spec-key">Storage</span><span class="spec-val2">256GB / 512GB UFS 3.1</span></div>
+      <div class="spec-row"><span class="spec-key">OS</span><span class="spec-val2">Android 12 → HyperOS</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-block-title">Pin & Sạc</div>
+      <div class="spec-row"><span class="spec-key">Dung lượng</span><span class="spec-val2">4860 mAh</span></div>
+      <div class="spec-row"><span class="spec-key">Có dây</span><span class="spec-val2">67W (52 phút 0→100%)</span></div>
+      <div class="spec-row"><span class="spec-key">Không dây</span><span class="spec-val2">50W Wireless</span></div>
+      <div class="spec-row"><span class="spec-key">Reverse</span><span class="spec-val2">10W Reverse Wireless</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-block-title">Thiết kế</div>
+      <div class="spec-row"><span class="spec-key">Kích thước</span><span class="spec-val2">163.2 × 75 × 9.1mm</span></div>
+      <div class="spec-row"><span class="spec-key">Khối lượng</span><span class="spec-val2">225g</span></div>
+      <div class="spec-row"><span class="spec-key">Mặt lưng</span><span class="spec-val2">Leica Texture Leather</span></div>
+      <div class="spec-row"><span class="spec-key">Chống nước</span><span class="spec-val2">IP68</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-block-title">Kết nối</div>
+      <div class="spec-row"><span class="spec-key">5G</span><span class="spec-val2">SA/NSA</span></div>
+      <div class="spec-row"><span class="spec-key">WiFi</span><span class="spec-val2">WiFi 6E</span></div>
+      <div class="spec-row"><span class="spec-key">Bluetooth</span><span class="spec-val2">5.3</span></div>
+      <div class="spec-row"><span class="spec-key">USB</span><span class="spec-val2">USB-C 2.0</span></div>
+      <div class="spec-row"><span class="spec-key">Khác</span><span class="spec-val2">NFC · IR Blaster</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-block-title">Bảo mật</div>
+      <div class="spec-row"><span class="spec-key">Vân tay</span><span class="spec-val2">In-display Optical</span></div>
+      <div class="spec-row"><span class="spec-key">Face ID</span><span class="spec-val2">2D Face Unlock</span></div>
+      <div class="spec-row"><span class="spec-key">Stereo</span><span class="spec-val2">Dual Harman Tuned</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROM -->
+<section id="rom" class="rom-section">
+  <div class="section-header">
+    <div class="section-tag">Custom & Official ROM</div>
+    <h2 class="section-title">Chọn ROM<br>Phù hợp với bạn</h2>
+  </div>
+  
+  <div class="rom-tabs">
+    <button class="rom-tab active" onclick="showTab('eu')">HyperOS EU</button>
+    <button class="rom-tab" onclick="showTab('tn')">HyperOS TN</button>
+    <button class="rom-tab" onclick="showTab('zk')">HyperZK</button>
+    <button class="rom-tab" onclick="showTab('cn')">China Official</button>
+    <button class="rom-tab" onclick="showTab('twrp')">TWRP Recovery</button>
+  </div>
+  
+  <div id="tab-eu" class="rom-content active">
+    <div class="rom-cards">
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">Xiaomi.eu</div>
+          <span class="rom-badge badge-recommended">Recommended</span>
+        </div>
+        <p class="rom-desc">ROM tốt nhất cho người dùng ngoài Trung Quốc. Base China ROM (stable) nhưng có đầy đủ Google Services, bỏ quảng cáo, mở khóa nhiều tính năng ẩn. Cập nhật thường xuyên, cộng đồng lớn.</p>
+        <div class="rom-features">
+          <div class="rom-feature">Full Google Services (GMS)</div>
+          <div class="rom-feature">Không quảng cáo, không bloatware</div>
+          <div class="rom-feature">Mở khóa tính năng camera ẩn</div>
+          <div class="rom-feature">Cập nhật security patch thường xuyên</div>
+          <div class="rom-feature">Hỗ trợ tiếng Việt</div>
+          <div class="rom-feature bad">Cần unlock bootloader</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://sourceforge.net/projects/xiaomi-eu-multilang-miui-roms/files/xiaomi.eu/MIUI-WEEKLY-RELEASES/" target="_blank" class="dl-link">
+            SourceForge — Weekly Build <span>↗</span>
+          </a>
+          <a href="https://xiaomi.eu/community/forums/hyperos-rom-releases.72/" target="_blank" class="dl-link">
+            Xiaomi.eu Community Forum <span>↗</span>
+          </a>
+          <a href="https://xdaforums.com/t/rom-miui-thor-xiaomi-eu-rom-for-xiaomi-12s-ultra.4481389/" target="_blank" class="dl-link">
+            XDA — Hướng dẫn cài đặt <span>↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">HyperOS EU Info</div>
+          <span class="rom-badge badge-stable">Stable</span>
+        </div>
+        <p class="rom-desc">Xiaomi.eu hiện đã ra bản HyperOS (không còn MIUI). Latest build dựa trên HyperOS 2.x base CN, được port sang EU với đầy đủ tính năng.</p>
+        <div class="rom-features">
+          <div class="rom-feature">HyperOS 2.0 base (Android 14/15)</div>
+          <div class="rom-feature">Widevine L1 (Netflix HD)</div>
+          <div class="rom-feature">Google Pay hoạt động (cần fix)</div>
+          <div class="rom-feature">Theme Store đầy đủ</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://miuirom.org/phones/xiaomi-12s-ultra" target="_blank" class="dl-link">
+            miuirom.org — Official CN ROM <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="tab-tn" class="rom-content">
+    <div class="rom-cards">
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">HyperOS TN</div>
+          <span class="rom-badge badge-stable">Vietnam</span>
+        </div>
+        <p class="rom-desc">ROM dành cho thị trường Việt Nam — tiếng Việt mặc định, hỗ trợ các dịch vụ nội địa. Thường dựa trên nền CN/EU có chỉnh sửa cho người dùng VN.</p>
+        <div class="rom-features">
+          <div class="rom-feature">Tiếng Việt mặc định</div>
+          <div class="rom-feature">Tối ưu cho mạng Việt Nam</div>
+          <div class="rom-feature">Google đầy đủ</div>
+          <div class="rom-feature">Cộng đồng hỗ trợ tại VN</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://t.me/xiaomifirmware" target="_blank" class="dl-link">
+            Telegram — Xiaomi Firmware VN <span>↗</span>
+          </a>
+          <a href="https://xdaforums.com/f/xiaomi-12s-ultra.12643/" target="_blank" class="dl-link">
+            XDA Forum — Xiaomi 12S Ultra <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="tab-zk" class="rom-content">
+    <div class="rom-cards">
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">HyperZK</div>
+          <span class="rom-badge badge-stable">Custom</span>
+        </div>
+        <p class="rom-desc">Custom ROM dựa trên HyperOS CN, được debloat nặng, tối ưu hiệu năng và tuổi thọ pin. Phù hợp người dùng muốn trải nghiệm clean nhất có thể từ nền tảng HyperOS chính thức.</p>
+        <div class="rom-features">
+          <div class="rom-feature">Debloated nặng — pin bền hơn</div>
+          <div class="rom-feature">Performance mode tùy chỉnh</div>
+          <div class="rom-feature">Tích hợp Magisk/KernelSU sẵn</div>
+          <div class="rom-feature">Nhiều module độc quyền</div>
+          <div class="rom-feature bad">Có thể thiếu một số tính năng CN gốc</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://xdaforums.com/f/xiaomi-12s-ultra.12643/" target="_blank" class="dl-link">
+            XDA — Tìm HyperZK builds <span>↗</span>
+          </a>
+          <a href="https://t.me/hyperzk" target="_blank" class="dl-link">
+            Telegram Channel HyperZK <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="tab-cn" class="rom-content">
+    <div class="rom-cards">
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">China HyperOS</div>
+          <span class="rom-badge badge-official">Official</span>
+        </div>
+        <p class="rom-desc">ROM gốc chính thức từ Xiaomi Trung Quốc. Ổn định nhất, camera tốt nhất (tuning gốc), nhưng không có Google Services sẵn. Cần cài GApps thêm hoặc dùng Magisk module.</p>
+        <div class="rom-features">
+          <div class="rom-feature">Ổn định nhất — tuning gốc từ Xiaomi</div>
+          <div class="rom-feature">Camera algorithm tốt nhất</div>
+          <div class="rom-feature">HyperOS 2.0 latest (Android 15)</div>
+          <div class="rom-feature bad">Không có Google Services sẵn</div>
+          <div class="rom-feature bad">Giao diện Tiếng Trung một số chỗ</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://miuirom.org/phones/xiaomi-12s-ultra" target="_blank" class="dl-link">
+            miuirom.org — Download CN ROM <span>↗</span>
+          </a>
+          <a href="https://mifirm.net/model/thor.ttt" target="_blank" class="dl-link">
+            mifirm.net — All firmware versions <span>↗</span>
+          </a>
+          <a href="https://c.mi.com/thread-3780769-1-0.html" target="_blank" class="dl-link">
+            Xiaomi Community — Official Thread <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="tab-twrp" class="rom-content">
+    <div class="rom-cards">
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">TWRP Official</div>
+          <span class="rom-badge badge-twrp">Recovery</span>
+        </div>
+        <p class="rom-desc">Team Win Recovery Project — custom recovery cần thiết để flash ROM. TWRP cho Xiaomi 12S Ultra (thor) được maintain bởi skkk, official port trên XDA.</p>
+        <div class="rom-features">
+          <div class="rom-feature">Official TWRP by skkk (XDA Recognized)</div>
+          <div class="rom-feature">Hỗ trợ decrypt data partition</div>
+          <div class="rom-feature">Flash ZIP / wipe / backup</div>
+          <div class="rom-feature">MTP mode hoạt động tốt</div>
+          <div class="rom-feature bad">Cần unlock bootloader trước</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://xdaforums.com/t/twrp-for-xiaomi-12s-ultra-thor.4494699/" target="_blank" class="dl-link">
+            XDA — TWRP Official Thread (skkk) <span>↗</span>
+          </a>
+          <a href="https://dl.twrp.me/thor/" target="_blank" class="dl-link">
+            twrp.me — Direct Download <span>↗</span>
+          </a>
+          <a href="https://xdaforums.com/t/rom-miui-thor-xiaomi-eu-rom-for-xiaomi-12s-ultra.4481389/" target="_blank" class="dl-link">
+            Hướng dẫn unlock &amp; flash TWRP <span>↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="rom-card">
+        <div class="rom-card-header">
+          <div class="rom-name">OrangeFox</div>
+          <span class="rom-badge badge-twrp">Recovery Alt</span>
+        </div>
+        <p class="rom-desc">Alternative recovery với UI đẹp hơn TWRP. Tích hợp thêm nhiều tính năng như OTA update support, built-in Magisk installer.</p>
+        <div class="rom-features">
+          <div class="rom-feature">UI hiện đại hơn TWRP</div>
+          <div class="rom-feature">Built-in Magisk installer</div>
+          <div class="rom-feature">Sync với OTA updates</div>
+        </div>
+        <div class="rom-links">
+          <a href="https://orangefox.download/device/thor" target="_blank" class="dl-link">
+            OrangeFox — Download for Thor <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY -->
+<section id="buy">
+  <div class="section-header">
+    <div class="section-tag">Mua Xiaomi 12S Ultra</div>
+    <h2 class="section-title">Chọn nơi mua<br>Uy tín nhất</h2>
+  </div>
+  <div class="buy-grid">
+    <div class="buy-card">
+      <div class="buy-logo" style="color:#e74c3c">Mobilecity</div>
+      <div class="buy-type">Cửa hàng điện tử</div>
+      <div class="buy-price">Giá cạnh tranh · Bảo hành chính hãng</div>
+      <a href="https://mobilecity.vn/tim-kiem?q=xiaomi+12s+ultra" target="_blank" class="buy-link">Xem tại đây →</a>
+    </div>
+    <div class="buy-card">
+      <div class="buy-logo" style="color:#ee4d2d">Shopee</div>
+      <div class="buy-type">E-commerce</div>
+      <div class="buy-price">Flash sale · Voucher · Freeship</div>
+      <a href="https://shopee.vn/search?keyword=xiaomi+12s+ultra" target="_blank" class="buy-link">Tìm trên Shopee →</a>
+    </div>
+    <div class="buy-card">
+      <div class="buy-logo" style="color:#0d47a1">Lazada</div>
+      <div class="buy-type">E-commerce</div>
+      <div class="buy-price">LazMall · Đảm bảo chính hãng</div>
+      <a href="https://www.lazada.vn/catalog/?q=xiaomi+12s+ultra" target="_blank" class="buy-link">Tìm trên Lazada →</a>
+    </div>
+    <div class="buy-card">
+      <div class="buy-logo" style="color:var(--gold)">Tiki</div>
+      <div class="buy-type">E-commerce</div>
+      <div class="buy-price">TikiNOW · Giao nhanh 2h</div>
+      <a href="https://tiki.vn/search?q=xiaomi+12s+ultra" target="_blank" class="buy-link">Tìm trên Tiki →</a>
+    </div>
+    <div class="buy-card">
+      <div class="buy-logo" style="color:#555">Thegioididong</div>
+      <div class="buy-type">Chuỗi bán lẻ lớn nhất VN</div>
+      <div class="buy-price">Trade-in · Trả góp 0%</div>
+      <a href="https://www.thegioididong.com/tim-kiem?key=xiaomi+12s+ultra" target="_blank" class="buy-link">Tìm tại TGDĐ →</a>
+    </div>
+    <div class="buy-card">
+      <div class="buy-logo" style="color:#c0392b">CellphoneS</div>
+      <div class="buy-type">Chuyên điện thoại</div>
+      <div class="buy-price">Máy đẹp · Bao kiểm tra</div>
+      <a href="https://cellphones.com.vn/catalogsearch/result/?q=xiaomi+12s+ultra" target="_blank" class="buy-link">Xem tại CPS →</a>
+    </div>
+  </div>
+  
+  <div style="margin-top:1px;background:var(--bg3);padding:2rem;border:1px solid var(--border)">
+    <p style="font-size:0.8rem;color:var(--muted);line-height:1.8">
+      <strong style="color:var(--accent);font-weight:500">Lưu ý khi mua:</strong> Xiaomi 12S Ultra chỉ có bản CN (China). Không có bản Global chính thức. 
+      Khi mua hàng secondhand hoặc xách tay, hãy kiểm tra codename <strong style="color:var(--text);font-weight:400">thor</strong> và model <strong style="color:var(--text);font-weight:400">2203121C</strong>. 
+      Ưu tiên mua máy còn bootloader locked để tránh rủi ro. Cân nhắc flash ROM EU để có trải nghiệm tốt nhất tại Việt Nam.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-note">
+    Website thông tin — không phải trang chính thức của Xiaomi.<br>
+    Các link mua hàng và tải ROM dẫn đến trang bên thứ ba.
+  </div>
+  <div class="footer-logo">Xiaomi 12S Ultra · Thor</div>
+</footer>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.rom-content').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.rom-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
